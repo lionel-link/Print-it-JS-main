@@ -41,6 +41,10 @@ arrowLeft.addEventListener("click", (e) => {
 
 arrowRight.addEventListener("click", (e) => {
   e.preventDefault();
+  next();
+});
+
+function next() {
   if (index == slides.length - 1) {
     index = -1;
     dots[3].classList.remove("active");
@@ -54,7 +58,7 @@ arrowRight.addEventListener("click", (e) => {
 
   dots[index + 1].classList.add("active");
   index++;
-});
+}
 
 function loadImage(url, tag) {
   const container = document.querySelector("#banner");
@@ -64,3 +68,9 @@ function loadImage(url, tag) {
   containerImg.setAttribute("src", url);
   containerTag.innerHTML = tag;
 }
+
+function infinteLoop() {
+  next();
+}
+
+setInterval(infinteLoop, 5000);
